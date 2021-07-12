@@ -18,16 +18,17 @@
  */
 package com.comphenix.packetwrapper;
 
-import java.util.Collection;
-import java.util.List;
-
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.InternalStructure;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.reflect.IntEnum;
 import com.comphenix.protocol.utility.MinecraftReflection;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
-
 import org.bukkit.ChatColor;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	public static final PacketType TYPE =
@@ -61,6 +62,12 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 		}
 	}
 
+	private InternalStructure getInternalStructure() {
+		Optional<InternalStructure> optStruct = handle.getOptionalStructures().read(0);
+		assert optStruct.isPresent();
+		return optStruct.get();
+	}
+	
 	/**
 	 * Retrieve Team Name.
 	 * <p>
@@ -89,7 +96,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current Team Display Name
 	 */
 	public WrappedChatComponent getDisplayName() {
-		return handle.getChatComponents().read(0);
+		return getInternalStructure().getChatComponents().read(0);
 	}
 
 	/**
@@ -98,7 +105,9 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @param value - new value.
 	 */
 	public void setDisplayName(WrappedChatComponent value) {
-		handle.getChatComponents().write(0, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getChatComponents().write(0, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 
 	/**
@@ -110,7 +119,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current Team Prefix
 	 */
 	public WrappedChatComponent getPrefix() {
-		return handle.getChatComponents().read(1);
+		return getInternalStructure().getChatComponents().read(1);
 	}
 
 	/**
@@ -119,7 +128,9 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @param value - new value.
 	 */
 	public void setPrefix(WrappedChatComponent value) {
-		handle.getChatComponents().write(1, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getChatComponents().write(1, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 
 	/**
@@ -131,7 +142,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current Team Suffix
 	 */
 	public WrappedChatComponent getSuffix() {
-		return handle.getChatComponents().read(2);
+		return getInternalStructure().getChatComponents().read(2);
 	}
 
 	/**
@@ -140,7 +151,9 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @param value - new value.
 	 */
 	public void setSuffix(WrappedChatComponent value) {
-		handle.getChatComponents().write(2, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getChatComponents().write(2, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 
 	/**
@@ -152,7 +165,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current Name Tag Visibility
 	 */
 	public String getNameTagVisibility() {
-		return handle.getStrings().read(1);
+		return getInternalStructure().getStrings().read(0);
 	}
 
 	/**
@@ -161,7 +174,9 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @param value - new value.
 	 */
 	public void setNameTagVisibility(String value) {
-		handle.getStrings().write(1, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getStrings().write(0, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 
 	/**
@@ -172,7 +187,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current Color
 	 */
 	public ChatColor getColor() {
-		return handle.getEnumModifier(ChatColor.class, MinecraftReflection.getMinecraftClass("EnumChatFormat")).read(0);
+		return getInternalStructure().getEnumModifier(ChatColor.class, MinecraftReflection.getMinecraftClass("EnumChatFormat")).read(0);
 	}
 
 	/**
@@ -181,7 +196,9 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @param value - new value.
 	 */
 	public void setColor(ChatColor value) {
-		handle.getEnumModifier(ChatColor.class, MinecraftReflection.getMinecraftClass("EnumChatFormat")).write(0, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getEnumModifier(ChatColor.class, MinecraftReflection.getMinecraftClass("EnumChatFormat")).write(0, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 
 	/**
@@ -190,7 +207,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current collision rule
 	 */
 	public String getCollisionRule() {
-		return handle.getStrings().read(2);
+		return getInternalStructure().getStrings().read(1);
 	}
 
 	/**
@@ -198,7 +215,9 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @param value - new value.
 	 */
 	public void setCollisionRule(String value) {
-		handle.getStrings().write(2, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getStrings().write(1, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 
 	/**
@@ -264,7 +283,7 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @return The current pack option data
 	 */
 	public int getPackOptionData() {
-		return handle.getIntegers().read(1);
+		return getInternalStructure().getIntegers().read(0);
 	}
 
 	/**
@@ -274,6 +293,8 @@ public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	 * @see #getPackOptionData()
 	 */
 	public void setPackOptionData(int value) {
-		handle.getIntegers().write(1, value);
+		InternalStructure struct = getInternalStructure();
+		struct.getIntegers().write(0, value);
+		handle.getOptionalStructures().write(0, Optional.of(struct));
 	}
 }

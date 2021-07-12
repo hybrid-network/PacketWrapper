@@ -16,12 +16,11 @@ import com.comphenix.protocol.reflect.FieldUtils;
 import com.comphenix.protocol.utility.Constants;
 import com.comphenix.protocol.utility.MinecraftReflection;
 import com.comphenix.protocol.utility.MinecraftVersion;
-import com.google.common.base.CaseFormat;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
-import net.minecraft.server.v1_15_R1.DispenserRegistry;
+import net.minecraft.server.DispenserRegistry;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
