@@ -18,6 +18,7 @@
  */
 package com.comphenix.packetwrapper;
 
+import com.comphenix.protocol.wrappers.WrappedEnumEntityUseAction;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -82,8 +83,8 @@ public class WrapperPlayClientUseEntity extends AbstractPacket {
 	 * 
 	 * @return The current Type
 	 */
-	public EntityUseAction getType() {
-		return handle.getEntityUseActions().read(0);
+	public WrappedEnumEntityUseAction getType() {
+		return handle.getEnumEntityUseActions().read(0);
 	}
 
 	/**
@@ -91,8 +92,8 @@ public class WrapperPlayClientUseEntity extends AbstractPacket {
 	 * 
 	 * @param value - new value.
 	 */
-	public void setType(EntityUseAction value) {
-		handle.getEntityUseActions().write(0, value);
+	public void setType(WrappedEnumEntityUseAction value) {
+		handle.getEnumEntityUseActions().write(0, value);
 	}
 
 	/**

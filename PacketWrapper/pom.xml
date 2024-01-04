@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.comphenix.packetwrapper</groupId>
   <artifactId>PacketWrapper</artifactId>
-  <version>1.17.1-R0.1-SNAPSHOT</version>
+  <version>1.20.4-R0.1-SNAPSHOT</version>
 
   <name>PacketWrapper</name>
 
@@ -47,7 +47,7 @@
     <dependency>
       <groupId>com.comphenix.protocol</groupId>
       <artifactId>ProtocolLib</artifactId>
-      <version>4.7.0</version>
+      <version>4.8.0</version>
       <scope>provided</scope>
     </dependency>
 
@@ -55,7 +55,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
