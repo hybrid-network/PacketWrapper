@@ -30,7 +30,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-class WrapperPlayServerScoreboardTeam extends AbstractPacket {
+public class WrapperPlayServerScoreboardTeam extends AbstractPacket {
 	public static final PacketType TYPE =
 			PacketType.Play.Server.SCOREBOARD_TEAM;
 
